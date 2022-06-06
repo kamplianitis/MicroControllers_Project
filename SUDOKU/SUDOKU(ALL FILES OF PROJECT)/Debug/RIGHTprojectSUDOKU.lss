@@ -1,0 +1,1360 @@
+
+RIGHTprojectSUDOKU.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000073e  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000007b2  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000005e  00800060  00800060  000007b2  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000007b2  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000007e4  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000060  00000000  00000000  00000820  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000c66  00000000  00000000  00000880  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000006ee  00000000  00000000  000014e6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000078b  00000000  00000000  00001bd4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000d4  00000000  00000000  00002360  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000003c6  00000000  00000000  00002434  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000031c  00000000  00000000  000027fa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000080  00000000  00000000  00002b16  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  18:	0c 94 65 01 	jmp	0x2ca	; 0x2ca <__vector_6>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  2c:	0c 94 c5 01 	jmp	0x38a	; 0x38a <__vector_11>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d4 e0       	ldi	r29, 0x04	; 4
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_clear_bss>:
+  60:	20 e0       	ldi	r18, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
+
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	ae 3b       	cpi	r26, 0xBE	; 190
+  6c:	b2 07       	cpc	r27, r18
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 3c 03 	call	0x678	; 0x678 <main>
+  74:	0c 94 9d 03 	jmp	0x73a	; 0x73a <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <FindUnassignedLocation>:
+	Then, through while loops where is the next position that is unassigned in the grid. The function
+	does that by updating both the pointers of the row and column in the grid so when it returns it 
+	passes the values and by that the position in the sudoku.
+*/
+uint8_t FindUnassignedLocation( uint8_t* row, uint8_t* col)
+{
+  7c:	cf 93       	push	r28
+  7e:	df 93       	push	r29
+  80:	ec 01       	movw	r28, r24
+  82:	db 01       	movw	r26, r22
+	(*row)=0;
+  84:	18 82       	st	Y, r1
+	(*col)=0;
+  86:	1c 92       	st	X, r1
+    while((*row)<N) // checks the remaining rows one by one
+  88:	1b c0       	rjmp	.+54     	; 0xc0 <FindUnassignedLocation+0x44>
+	{
+        while((*col)<N) // check the values of each row 
+		{
+            if (grid[*row][*col] == UNASSIGNED)
+  8a:	28 81       	ld	r18, Y
+  8c:	30 e0       	ldi	r19, 0x00	; 0
+  8e:	f9 01       	movw	r30, r18
+  90:	ee 0f       	add	r30, r30
+  92:	ff 1f       	adc	r31, r31
+  94:	ee 0f       	add	r30, r30
+  96:	ff 1f       	adc	r31, r31
+  98:	ee 0f       	add	r30, r30
+  9a:	ff 1f       	adc	r31, r31
+  9c:	e2 0f       	add	r30, r18
+  9e:	f3 1f       	adc	r31, r19
+  a0:	e0 5a       	subi	r30, 0xA0	; 160
+  a2:	ff 4f       	sbci	r31, 0xFF	; 255
+  a4:	e9 0f       	add	r30, r25
+  a6:	f1 1d       	adc	r31, r1
+  a8:	20 81       	ld	r18, Z
+  aa:	22 23       	and	r18, r18
+  ac:	71 f0       	breq	.+28     	; 0xca <FindUnassignedLocation+0x4e>
+			{
+                return 1; // the row, col are already updated so there is nothing to be done
+			}
+			(*col)++;
+  ae:	9f 5f       	subi	r25, 0xFF	; 255
+  b0:	9c 93       	st	X, r25
+{
+	(*row)=0;
+	(*col)=0;
+    while((*row)<N) // checks the remaining rows one by one
+	{
+        while((*col)<N) // check the values of each row 
+  b2:	9c 91       	ld	r25, X
+  b4:	99 30       	cpi	r25, 0x09	; 9
+  b6:	48 f3       	brcs	.-46     	; 0x8a <FindUnassignedLocation+0xe>
+			{
+                return 1; // the row, col are already updated so there is nothing to be done
+			}
+			(*col)++;
+		}
+		(*col)=0; // end of the row
+  b8:	1c 92       	st	X, r1
+		(*row)++;
+  ba:	88 81       	ld	r24, Y
+  bc:	8f 5f       	subi	r24, 0xFF	; 255
+  be:	88 83       	st	Y, r24
+*/
+uint8_t FindUnassignedLocation( uint8_t* row, uint8_t* col)
+{
+	(*row)=0;
+	(*col)=0;
+    while((*row)<N) // checks the remaining rows one by one
+  c0:	88 81       	ld	r24, Y
+  c2:	89 30       	cpi	r24, 0x09	; 9
+  c4:	b0 f3       	brcs	.-20     	; 0xb2 <FindUnassignedLocation+0x36>
+			(*col)++;
+		}
+		(*col)=0; // end of the row
+		(*row)++;
+	}
+    return 0; // case that there is no unassigned values in the grid. 
+  c6:	80 e0       	ldi	r24, 0x00	; 0
+  c8:	01 c0       	rjmp	.+2      	; 0xcc <FindUnassignedLocation+0x50>
+	{
+        while((*col)<N) // check the values of each row 
+		{
+            if (grid[*row][*col] == UNASSIGNED)
+			{
+                return 1; // the row, col are already updated so there is nothing to be done
+  ca:	81 e0       	ldi	r24, 0x01	; 1
+		}
+		(*col)=0; // end of the row
+		(*row)++;
+	}
+    return 0; // case that there is no unassigned values in the grid. 
+}
+  cc:	df 91       	pop	r29
+  ce:	cf 91       	pop	r28
+  d0:	08 95       	ret
+
+000000d2 <isSafe>:
+
+	In case the safe flag is up after all the checks, which means that the conditions 
+	have been met, the functions returns true. 
+*/
+uint8_t isSafe( uint8_t row,uint8_t col, uint8_t num)
+{
+  d2:	cf 93       	push	r28
+  d4:	df 93       	push	r29
+	uint8_t tempCol;
+	
+
+
+	// row check 
+	tempCol=0;
+  d6:	50 e0       	ldi	r21, 0x00	; 0
+*/
+uint8_t isSafe( uint8_t row,uint8_t col, uint8_t num)
+{
+	//safe flag that is responsible of getting down if 
+	//some of the below conditions are not met
+	uint8_t safe=1; 
+  d8:	91 e0       	ldi	r25, 0x01	; 1
+	
+
+
+	// row check 
+	tempCol=0;
+    while(tempCol<N && safe!=0){
+  da:	14 c0       	rjmp	.+40     	; 0x104 <isSafe+0x32>
+		if (grid[row][tempCol] == num){
+  dc:	28 2f       	mov	r18, r24
+  de:	30 e0       	ldi	r19, 0x00	; 0
+  e0:	f9 01       	movw	r30, r18
+  e2:	ee 0f       	add	r30, r30
+  e4:	ff 1f       	adc	r31, r31
+  e6:	ee 0f       	add	r30, r30
+  e8:	ff 1f       	adc	r31, r31
+  ea:	ee 0f       	add	r30, r30
+  ec:	ff 1f       	adc	r31, r31
+  ee:	e2 0f       	add	r30, r18
+  f0:	f3 1f       	adc	r31, r19
+  f2:	e0 5a       	subi	r30, 0xA0	; 160
+  f4:	ff 4f       	sbci	r31, 0xFF	; 255
+  f6:	e5 0f       	add	r30, r21
+  f8:	f1 1d       	adc	r31, r1
+  fa:	20 81       	ld	r18, Z
+  fc:	24 13       	cpse	r18, r20
+  fe:	01 c0       	rjmp	.+2      	; 0x102 <isSafe+0x30>
+			safe=0; // case there is the same number in the same row
+ 100:	90 e0       	ldi	r25, 0x00	; 0
+		}
+		tempCol++;
+ 102:	5f 5f       	subi	r21, 0xFF	; 255
+	
+
+
+	// row check 
+	tempCol=0;
+    while(tempCol<N && safe!=0){
+ 104:	59 30       	cpi	r21, 0x09	; 9
+ 106:	c8 f4       	brcc	.+50     	; 0x13a <isSafe+0x68>
+ 108:	91 11       	cpse	r25, r1
+ 10a:	e8 cf       	rjmp	.-48     	; 0xdc <isSafe+0xa>
+ 10c:	50 e0       	ldi	r21, 0x00	; 0
+ 10e:	16 c0       	rjmp	.+44     	; 0x13c <isSafe+0x6a>
+	}
+
+	// column check
+	tempRow=0;
+	while(tempRow<N && safe!=0){
+		if (grid[tempRow][col] == num){
+ 110:	25 2f       	mov	r18, r21
+ 112:	30 e0       	ldi	r19, 0x00	; 0
+ 114:	f9 01       	movw	r30, r18
+ 116:	ee 0f       	add	r30, r30
+ 118:	ff 1f       	adc	r31, r31
+ 11a:	ee 0f       	add	r30, r30
+ 11c:	ff 1f       	adc	r31, r31
+ 11e:	ee 0f       	add	r30, r30
+ 120:	ff 1f       	adc	r31, r31
+ 122:	e2 0f       	add	r30, r18
+ 124:	f3 1f       	adc	r31, r19
+ 126:	e0 5a       	subi	r30, 0xA0	; 160
+ 128:	ff 4f       	sbci	r31, 0xFF	; 255
+ 12a:	e6 0f       	add	r30, r22
+ 12c:	f1 1d       	adc	r31, r1
+ 12e:	20 81       	ld	r18, Z
+ 130:	42 13       	cpse	r20, r18
+ 132:	01 c0       	rjmp	.+2      	; 0x136 <isSafe+0x64>
+			safe=0; // case there is the same number in the same column
+ 134:	90 e0       	ldi	r25, 0x00	; 0
+		}
+		tempRow++;
+ 136:	5f 5f       	subi	r21, 0xFF	; 255
+ 138:	01 c0       	rjmp	.+2      	; 0x13c <isSafe+0x6a>
+ 13a:	50 e0       	ldi	r21, 0x00	; 0
+		tempCol++;
+	}
+
+	// column check
+	tempRow=0;
+	while(tempRow<N && safe!=0){
+ 13c:	59 30       	cpi	r21, 0x09	; 9
+ 13e:	10 f4       	brcc	.+4      	; 0x144 <isSafe+0x72>
+ 140:	91 11       	cpse	r25, r1
+ 142:	e6 cf       	rjmp	.-52     	; 0x110 <isSafe+0x3e>
+	}
+	
+	// sub-grid check
+	
+	//Take the relative position in the sub-grid.
+	tempCol=col - col % 3;
+ 144:	ab ea       	ldi	r26, 0xAB	; 171
+ 146:	6a 9f       	mul	r22, r26
+ 148:	b1 2d       	mov	r27, r1
+ 14a:	11 24       	eor	r1, r1
+ 14c:	b6 95       	lsr	r27
+ 14e:	2b 2f       	mov	r18, r27
+ 150:	22 0f       	add	r18, r18
+ 152:	b2 0f       	add	r27, r18
+	tempRow=row - row % 3;
+ 154:	8a 9f       	mul	r24, r26
+ 156:	a1 2d       	mov	r26, r1
+ 158:	11 24       	eor	r1, r1
+ 15a:	a6 95       	lsr	r26
+ 15c:	2a 2f       	mov	r18, r26
+ 15e:	22 0f       	add	r18, r18
+ 160:	a2 0f       	add	r26, r18
+	
+	uint8_t boxRow=0;
+ 162:	70 e0       	ldi	r23, 0x00	; 0
+	uint8_t boxCol=0;
+	// check if there is the same number in the sub-grid
+	while(boxRow<3 && safe!=0)
+ 164:	21 c0       	rjmp	.+66     	; 0x1a8 <isSafe+0xd6>
+	{
+		boxCol=0;
+		while(boxCol<3 && safe!=0)
+		{
+			if (grid[boxRow + tempRow][boxCol + tempCol] == num)
+ 166:	2a 2f       	mov	r18, r26
+ 168:	30 e0       	ldi	r19, 0x00	; 0
+ 16a:	27 0f       	add	r18, r23
+ 16c:	31 1d       	adc	r19, r1
+ 16e:	eb 2f       	mov	r30, r27
+ 170:	f0 e0       	ldi	r31, 0x00	; 0
+ 172:	e5 0f       	add	r30, r21
+ 174:	f1 1d       	adc	r31, r1
+ 176:	e9 01       	movw	r28, r18
+ 178:	cc 0f       	add	r28, r28
+ 17a:	dd 1f       	adc	r29, r29
+ 17c:	cc 0f       	add	r28, r28
+ 17e:	dd 1f       	adc	r29, r29
+ 180:	cc 0f       	add	r28, r28
+ 182:	dd 1f       	adc	r29, r29
+ 184:	2c 0f       	add	r18, r28
+ 186:	3d 1f       	adc	r19, r29
+ 188:	20 5a       	subi	r18, 0xA0	; 160
+ 18a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 18c:	e2 0f       	add	r30, r18
+ 18e:	f3 1f       	adc	r31, r19
+ 190:	20 81       	ld	r18, Z
+ 192:	42 13       	cpse	r20, r18
+ 194:	01 c0       	rjmp	.+2      	; 0x198 <isSafe+0xc6>
+			{
+				safe=0;
+ 196:	90 e0       	ldi	r25, 0x00	; 0
+			}
+			boxCol++;
+ 198:	5f 5f       	subi	r21, 0xFF	; 255
+ 19a:	01 c0       	rjmp	.+2      	; 0x19e <isSafe+0xcc>
+ 19c:	50 e0       	ldi	r21, 0x00	; 0
+	uint8_t boxCol=0;
+	// check if there is the same number in the sub-grid
+	while(boxRow<3 && safe!=0)
+	{
+		boxCol=0;
+		while(boxCol<3 && safe!=0)
+ 19e:	53 30       	cpi	r21, 0x03	; 3
+ 1a0:	10 f4       	brcc	.+4      	; 0x1a6 <isSafe+0xd4>
+ 1a2:	91 11       	cpse	r25, r1
+ 1a4:	e0 cf       	rjmp	.-64     	; 0x166 <isSafe+0x94>
+			{
+				safe=0;
+			}
+			boxCol++;
+		}
+		boxRow++;
+ 1a6:	7f 5f       	subi	r23, 0xFF	; 255
+	tempRow=row - row % 3;
+	
+	uint8_t boxRow=0;
+	uint8_t boxCol=0;
+	// check if there is the same number in the sub-grid
+	while(boxRow<3 && safe!=0)
+ 1a8:	73 30       	cpi	r23, 0x03	; 3
+ 1aa:	10 f4       	brcc	.+4      	; 0x1b0 <isSafe+0xde>
+ 1ac:	91 11       	cpse	r25, r1
+ 1ae:	f6 cf       	rjmp	.-20     	; 0x19c <isSafe+0xca>
+			}
+			boxCol++;
+		}
+		boxRow++;
+	}
+    return safe && grid[row][col] == UNASSIGNED;
+ 1b0:	99 23       	and	r25, r25
+ 1b2:	a1 f0       	breq	.+40     	; 0x1dc <isSafe+0x10a>
+ 1b4:	90 e0       	ldi	r25, 0x00	; 0
+ 1b6:	fc 01       	movw	r30, r24
+ 1b8:	ee 0f       	add	r30, r30
+ 1ba:	ff 1f       	adc	r31, r31
+ 1bc:	ee 0f       	add	r30, r30
+ 1be:	ff 1f       	adc	r31, r31
+ 1c0:	ee 0f       	add	r30, r30
+ 1c2:	ff 1f       	adc	r31, r31
+ 1c4:	8e 0f       	add	r24, r30
+ 1c6:	9f 1f       	adc	r25, r31
+ 1c8:	fc 01       	movw	r30, r24
+ 1ca:	e0 5a       	subi	r30, 0xA0	; 160
+ 1cc:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1ce:	e6 0f       	add	r30, r22
+ 1d0:	f1 1d       	adc	r31, r1
+ 1d2:	80 81       	ld	r24, Z
+ 1d4:	88 23       	and	r24, r24
+ 1d6:	21 f0       	breq	.+8      	; 0x1e0 <isSafe+0x10e>
+ 1d8:	80 e0       	ldi	r24, 0x00	; 0
+ 1da:	03 c0       	rjmp	.+6      	; 0x1e2 <isSafe+0x110>
+ 1dc:	80 e0       	ldi	r24, 0x00	; 0
+ 1de:	01 c0       	rjmp	.+2      	; 0x1e2 <isSafe+0x110>
+ 1e0:	81 e0       	ldi	r24, 0x01	; 1
+}
+ 1e2:	df 91       	pop	r29
+ 1e4:	cf 91       	pop	r28
+ 1e6:	08 95       	ret
+
+000001e8 <SolveSudoku>:
+	in the grid and starts testing possible numbers there. If a number can be assigned 
+	there the function calls herself to repeat the process. if not the function does not 
+	assign the number and tries the next one.
+*/
+uint8_t SolveSudoku()
+{
+ 1e8:	1f 93       	push	r17
+ 1ea:	cf 93       	push	r28
+ 1ec:	df 93       	push	r29
+ 1ee:	00 d0       	rcall	.+0      	; 0x1f0 <SolveSudoku+0x8>
+ 1f0:	cd b7       	in	r28, 0x3d	; 61
+ 1f2:	de b7       	in	r29, 0x3e	; 62
+     uint8_t row;
+	 uint8_t col;
+    // Check If there is no unassigned
+    // location, we are done
+    if (!FindUnassignedLocation(&row,&col) || play==0)
+ 1f4:	be 01       	movw	r22, r28
+ 1f6:	6e 5f       	subi	r22, 0xFE	; 254
+ 1f8:	7f 4f       	sbci	r23, 0xFF	; 255
+ 1fa:	ce 01       	movw	r24, r28
+ 1fc:	01 96       	adiw	r24, 0x01	; 1
+ 1fe:	0e 94 3e 00 	call	0x7c	; 0x7c <FindUnassignedLocation>
+ 202:	88 23       	and	r24, r24
+ 204:	09 f4       	brne	.+2      	; 0x208 <__EEPROM_REGION_LENGTH__+0x8>
+ 206:	43 c0       	rjmp	.+134    	; 0x28e <__EEPROM_REGION_LENGTH__+0x8e>
+ 208:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <play>
+ 20c:	88 23       	and	r24, r24
+ 20e:	09 f4       	brne	.+2      	; 0x212 <__EEPROM_REGION_LENGTH__+0x12>
+ 210:	40 c0       	rjmp	.+128    	; 0x292 <__EEPROM_REGION_LENGTH__+0x92>
+        return 1; // success!
+   //Consider digits 1 to 9
+	progress++;
+ 212:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <progress>
+ 216:	8f 5f       	subi	r24, 0xFF	; 255
+ 218:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <progress>
+    for (uint8_t num = 1; num <= 9; num++)
+ 21c:	11 e0       	ldi	r17, 0x01	; 1
+ 21e:	2e c0       	rjmp	.+92     	; 0x27c <__EEPROM_REGION_LENGTH__+0x7c>
+    {
+
+        // Check if there is a possible match
+        if (isSafe( row, col, num))
+ 220:	41 2f       	mov	r20, r17
+ 222:	6a 81       	ldd	r22, Y+2	; 0x02
+ 224:	89 81       	ldd	r24, Y+1	; 0x01
+ 226:	0e 94 69 00 	call	0xd2	; 0xd2 <isSafe>
+ 22a:	88 23       	and	r24, r24
+ 22c:	31 f1       	breq	.+76     	; 0x27a <__EEPROM_REGION_LENGTH__+0x7a>
+        {
+
+            // Make tentative assignment
+            grid[row][col] = num;
+ 22e:	89 81       	ldd	r24, Y+1	; 0x01
+ 230:	90 e0       	ldi	r25, 0x00	; 0
+ 232:	2a 81       	ldd	r18, Y+2	; 0x02
+ 234:	fc 01       	movw	r30, r24
+ 236:	ee 0f       	add	r30, r30
+ 238:	ff 1f       	adc	r31, r31
+ 23a:	ee 0f       	add	r30, r30
+ 23c:	ff 1f       	adc	r31, r31
+ 23e:	ee 0f       	add	r30, r30
+ 240:	ff 1f       	adc	r31, r31
+ 242:	e8 0f       	add	r30, r24
+ 244:	f9 1f       	adc	r31, r25
+ 246:	e0 5a       	subi	r30, 0xA0	; 160
+ 248:	ff 4f       	sbci	r31, 0xFF	; 255
+ 24a:	e2 0f       	add	r30, r18
+ 24c:	f1 1d       	adc	r31, r1
+ 24e:	10 83       	st	Z, r17
+
+            // Return, if success!
+            if (SolveSudoku()){
+ 250:	0e 94 f4 00 	call	0x1e8	; 0x1e8 <SolveSudoku>
+ 254:	81 11       	cpse	r24, r1
+ 256:	1f c0       	rjmp	.+62     	; 0x296 <__EEPROM_REGION_LENGTH__+0x96>
+                return 1;
+			}
+            // Failure, unmake & try again
+            grid[row][col] = UNASSIGNED;
+ 258:	89 81       	ldd	r24, Y+1	; 0x01
+ 25a:	90 e0       	ldi	r25, 0x00	; 0
+ 25c:	2a 81       	ldd	r18, Y+2	; 0x02
+ 25e:	fc 01       	movw	r30, r24
+ 260:	ee 0f       	add	r30, r30
+ 262:	ff 1f       	adc	r31, r31
+ 264:	ee 0f       	add	r30, r30
+ 266:	ff 1f       	adc	r31, r31
+ 268:	ee 0f       	add	r30, r30
+ 26a:	ff 1f       	adc	r31, r31
+ 26c:	e8 0f       	add	r30, r24
+ 26e:	f9 1f       	adc	r31, r25
+ 270:	e0 5a       	subi	r30, 0xA0	; 160
+ 272:	ff 4f       	sbci	r31, 0xFF	; 255
+ 274:	e2 0f       	add	r30, r18
+ 276:	f1 1d       	adc	r31, r1
+ 278:	10 82       	st	Z, r1
+    // location, we are done
+    if (!FindUnassignedLocation(&row,&col) || play==0)
+        return 1; // success!
+   //Consider digits 1 to 9
+	progress++;
+    for (uint8_t num = 1; num <= 9; num++)
+ 27a:	1f 5f       	subi	r17, 0xFF	; 255
+ 27c:	1a 30       	cpi	r17, 0x0A	; 10
+ 27e:	80 f2       	brcs	.-96     	; 0x220 <__EEPROM_REGION_LENGTH__+0x20>
+            grid[row][col] = UNASSIGNED;
+        }
+    }
+
+    // This triggers backtracking
+	progress--;
+ 280:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <progress>
+ 284:	81 50       	subi	r24, 0x01	; 1
+ 286:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <progress>
+    return 0;
+ 28a:	80 e0       	ldi	r24, 0x00	; 0
+ 28c:	05 c0       	rjmp	.+10     	; 0x298 <__EEPROM_REGION_LENGTH__+0x98>
+     uint8_t row;
+	 uint8_t col;
+    // Check If there is no unassigned
+    // location, we are done
+    if (!FindUnassignedLocation(&row,&col) || play==0)
+        return 1; // success!
+ 28e:	81 e0       	ldi	r24, 0x01	; 1
+ 290:	03 c0       	rjmp	.+6      	; 0x298 <__EEPROM_REGION_LENGTH__+0x98>
+ 292:	81 e0       	ldi	r24, 0x01	; 1
+ 294:	01 c0       	rjmp	.+2      	; 0x298 <__EEPROM_REGION_LENGTH__+0x98>
+            // Make tentative assignment
+            grid[row][col] = num;
+
+            // Return, if success!
+            if (SolveSudoku()){
+                return 1;
+ 296:	81 e0       	ldi	r24, 0x01	; 1
+    }
+
+    // This triggers backtracking
+	progress--;
+    return 0;
+}
+ 298:	0f 90       	pop	r0
+ 29a:	0f 90       	pop	r0
+ 29c:	df 91       	pop	r29
+ 29e:	cf 91       	pop	r28
+ 2a0:	1f 91       	pop	r17
+ 2a2:	08 95       	ret
+
+000002a4 <putC>:
+	The function is used for I/O. It waits until UDRE flag is up. (the flag is located
+	in the UCSRA). When the flag is up, it writes the writeChar var into the UDR in order
+	to be exported.
+*/
+void putC(uint8_t writeChar){
+	while(!((UCSRA & 0x20)==0x20)){}  //; wait until data register empty
+ 2a4:	5d 9b       	sbis	0x0b, 5	; 11
+ 2a6:	fe cf       	rjmp	.-4      	; 0x2a4 <putC>
+	UDR=writeChar;
+ 2a8:	8c b9       	out	0x0c, r24	; 12
+ 2aa:	08 95       	ret
+
+000002ac <getC>:
+	not the <LF> ascii value. Then returns the char the has been 
+	read.
+*/
+char getC(){
+	char  readChar;   //read char from UART
+	readChar=UDR;
+ 2ac:	8c b1       	in	r24, 0x0c	; 12
+	if(readChar!=0x0D){
+ 2ae:	8d 30       	cpi	r24, 0x0D	; 13
+ 2b0:	59 f0       	breq	.+22     	; 0x2c8 <getC+0x1c>
+		readWord[letter]=readChar;
+ 2b2:	e0 91 b9 00 	lds	r30, 0x00B9	; 0x8000b9 <letter>
+ 2b6:	f0 e0       	ldi	r31, 0x00	; 0
+ 2b8:	ef 54       	subi	r30, 0x4F	; 79
+ 2ba:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2bc:	80 83       	st	Z, r24
+		letter++;
+ 2be:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <letter>
+ 2c2:	9f 5f       	subi	r25, 0xFF	; 255
+ 2c4:	90 93 b9 00 	sts	0x00B9, r25	; 0x8000b9 <letter>
+	}
+	return readChar;
+}
+ 2c8:	08 95       	ret
+
+000002ca <__vector_6>:
+
+////////////////////////
+//  ISR FOR TIMER_CMP //
+////////////////////////
+ISR(TIMER1_COMPA_vect, ISR_NAKED) {
+	asm("  in r0,__SREG__ \n\t\
+ 2ca:	0f b6       	in	r0, 0x3f	; 63
+ 2cc:	0f 92       	push	r0
+ 2ce:	00 24       	eor	r0, r0
+ 2d0:	0f 93       	push	r16
+ 2d2:	1f 93       	push	r17
+ 2d4:	2f 93       	push	r18
+ 2d6:	3f 93       	push	r19
+ 2d8:	4f 93       	push	r20
+ 2da:	5f 93       	push	r21
+ 2dc:	6f 93       	push	r22
+ 2de:	7f 93       	push	r23
+ 2e0:	8f 93       	push	r24
+ 2e2:	9f 93       	push	r25
+ 2e4:	af 93       	push	r26
+ 2e6:	bf 93       	push	r27
+ 2e8:	cf 93       	push	r28
+ 2ea:	df 93       	push	r29
+ 2ec:	ef 93       	push	r30
+ 2ee:	ff 93       	push	r31
+	push r27 \n\t\
+	push r28 \n\t\
+	push r29 \n\t\
+	push r30 \n\t\
+	push r31");
+	if(progress>79){PORTB=255;}    // activate LEDs accordingly with progress 
+ 2f0:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <progress>
+ 2f4:	80 35       	cpi	r24, 0x50	; 80
+ 2f6:	18 f0       	brcs	.+6      	; 0x2fe <__vector_6+0x34>
+ 2f8:	8f ef       	ldi	r24, 0xFF	; 255
+ 2fa:	88 bb       	out	0x18, r24	; 24
+ 2fc:	30 c0       	rjmp	.+96     	; 0x35e <__vector_6+0x94>
+	else if(progress>69){PORTB=127;}
+ 2fe:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <progress>
+ 302:	86 34       	cpi	r24, 0x46	; 70
+ 304:	18 f0       	brcs	.+6      	; 0x30c <__vector_6+0x42>
+ 306:	8f e7       	ldi	r24, 0x7F	; 127
+ 308:	88 bb       	out	0x18, r24	; 24
+ 30a:	29 c0       	rjmp	.+82     	; 0x35e <__vector_6+0x94>
+	else if(progress>59){PORTB=63;}	
+ 30c:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <progress>
+ 310:	8c 33       	cpi	r24, 0x3C	; 60
+ 312:	18 f0       	brcs	.+6      	; 0x31a <__vector_6+0x50>
+ 314:	8f e3       	ldi	r24, 0x3F	; 63
+ 316:	88 bb       	out	0x18, r24	; 24
+ 318:	22 c0       	rjmp	.+68     	; 0x35e <__vector_6+0x94>
+	else if(progress>49){PORTB=31;}
+ 31a:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <progress>
+ 31e:	82 33       	cpi	r24, 0x32	; 50
+ 320:	18 f0       	brcs	.+6      	; 0x328 <__vector_6+0x5e>
+ 322:	8f e1       	ldi	r24, 0x1F	; 31
+ 324:	88 bb       	out	0x18, r24	; 24
+ 326:	1b c0       	rjmp	.+54     	; 0x35e <__vector_6+0x94>
+	else if(progress>39){PORTB=15;}
+ 328:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <progress>
+ 32c:	88 32       	cpi	r24, 0x28	; 40
+ 32e:	18 f0       	brcs	.+6      	; 0x336 <__vector_6+0x6c>
+ 330:	8f e0       	ldi	r24, 0x0F	; 15
+ 332:	88 bb       	out	0x18, r24	; 24
+ 334:	14 c0       	rjmp	.+40     	; 0x35e <__vector_6+0x94>
+	else if(progress>29){PORTB=7;}
+ 336:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <progress>
+ 33a:	8e 31       	cpi	r24, 0x1E	; 30
+ 33c:	18 f0       	brcs	.+6      	; 0x344 <__vector_6+0x7a>
+ 33e:	87 e0       	ldi	r24, 0x07	; 7
+ 340:	88 bb       	out	0x18, r24	; 24
+ 342:	0d c0       	rjmp	.+26     	; 0x35e <__vector_6+0x94>
+	else if(progress>19){PORTB=3;}
+ 344:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <progress>
+ 348:	84 31       	cpi	r24, 0x14	; 20
+ 34a:	18 f0       	brcs	.+6      	; 0x352 <__vector_6+0x88>
+ 34c:	83 e0       	ldi	r24, 0x03	; 3
+ 34e:	88 bb       	out	0x18, r24	; 24
+ 350:	06 c0       	rjmp	.+12     	; 0x35e <__vector_6+0x94>
+	else if(progress>9){PORTB=1;}  
+ 352:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <progress>
+ 356:	8a 30       	cpi	r24, 0x0A	; 10
+ 358:	10 f0       	brcs	.+4      	; 0x35e <__vector_6+0x94>
+ 35a:	81 e0       	ldi	r24, 0x01	; 1
+ 35c:	88 bb       	out	0x18, r24	; 24
+	TCNT1H=0;					 // Restart TIMER
+ 35e:	1d bc       	out	0x2d, r1	; 45
+	TCNT1L=0;					 // Restart TIMER
+ 360:	1c bc       	out	0x2c, r1	; 44
+	asm(" pop r31\n\t\
+ 362:	ff 91       	pop	r31
+ 364:	ef 91       	pop	r30
+ 366:	df 91       	pop	r29
+ 368:	cf 91       	pop	r28
+ 36a:	bf 91       	pop	r27
+ 36c:	af 91       	pop	r26
+ 36e:	9f 91       	pop	r25
+ 370:	8f 91       	pop	r24
+ 372:	7f 91       	pop	r23
+ 374:	6f 91       	pop	r22
+ 376:	5f 91       	pop	r21
+ 378:	4f 91       	pop	r20
+ 37a:	3f 91       	pop	r19
+ 37c:	2f 91       	pop	r18
+ 37e:	1f 91       	pop	r17
+ 380:	0f 91       	pop	r16
+ 382:	0f 90       	pop	r0
+ 384:	0f be       	out	0x3f, r0	; 63
+ 386:	00 24       	eor	r0, r0
+	pop r17 \n\t\
+	pop r16 \n\t\
+	pop r0	 \n\t\
+	out __SREG__,r0 \n\t\
+	clr r0");
+	reti();
+ 388:	18 95       	reti
+
+0000038a <__vector_11>:
+////////////////////////
+//  ISR FOR USART     //
+////////////////////////
+
+ISR(USART_RXC_vect, ISR_NAKED){
+	asm("  in r0,__SREG__ \n\t\
+ 38a:	0f b6       	in	r0, 0x3f	; 63
+ 38c:	0f 92       	push	r0
+ 38e:	00 24       	eor	r0, r0
+ 390:	0f 93       	push	r16
+ 392:	1f 93       	push	r17
+ 394:	2f 93       	push	r18
+ 396:	3f 93       	push	r19
+ 398:	4f 93       	push	r20
+ 39a:	5f 93       	push	r21
+ 39c:	6f 93       	push	r22
+ 39e:	7f 93       	push	r23
+ 3a0:	8f 93       	push	r24
+ 3a2:	9f 93       	push	r25
+ 3a4:	af 93       	push	r26
+ 3a6:	bf 93       	push	r27
+ 3a8:	cf 93       	push	r28
+ 3aa:	df 93       	push	r29
+ 3ac:	ef 93       	push	r30
+ 3ae:	ff 93       	push	r31
+		   push r27 \n\t\
+		   push r28 \n\t\
+		   push r29 \n\t\
+		   push r30 \n\t\
+		   push r31");
+	char readChar=0;
+ 3b0:	80 e0       	ldi	r24, 0x00	; 0
+	while((UCSRA & 0x80) == 0x80){  // while RXC==1 (of UCSRA) read char
+ 3b2:	02 c0       	rjmp	.+4      	; 0x3b8 <__vector_11+0x2e>
+		readChar=getC();
+ 3b4:	0e 94 56 01 	call	0x2ac	; 0x2ac <getC>
+		   push r28 \n\t\
+		   push r29 \n\t\
+		   push r30 \n\t\
+		   push r31");
+	char readChar=0;
+	while((UCSRA & 0x80) == 0x80){  // while RXC==1 (of UCSRA) read char
+ 3b8:	5f 99       	sbic	0x0b, 7	; 11
+ 3ba:	fc cf       	rjmp	.-8      	; 0x3b4 <__vector_11+0x2a>
+		readChar=getC();
+	}
+		if(readChar==0x0A){ // if LF received send OK;
+ 3bc:	8a 30       	cpi	r24, 0x0A	; 10
+ 3be:	09 f0       	breq	.+2      	; 0x3c2 <__vector_11+0x38>
+ 3c0:	40 c1       	rjmp	.+640    	; 0x642 <__stack+0x1e3>
+			if(readWord[0]=='A'){ // if command = AT send ok
+ 3c2:	80 91 b1 00 	lds	r24, 0x00B1	; 0x8000b1 <readWord>
+ 3c6:	81 34       	cpi	r24, 0x41	; 65
+ 3c8:	69 f4       	brne	.+26     	; 0x3e4 <__vector_11+0x5a>
+				putC('O');        // send letter O
+ 3ca:	8f e4       	ldi	r24, 0x4F	; 79
+ 3cc:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC('K');        // send letter K
+ 3d0:	8b e4       	ldi	r24, 0x4B	; 75
+ 3d2:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0D);         // send letter CR
+ 3d6:	8d e0       	ldi	r24, 0x0D	; 13
+ 3d8:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0A);         // send letter LF
+ 3dc:	8a e0       	ldi	r24, 0x0A	; 10
+ 3de:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+ 3e2:	23 c1       	rjmp	.+582    	; 0x62a <__stack+0x1cb>
+			}
+			else if(readWord[0]=='C'){  //set grid=0 if readchar==C
+ 3e4:	80 91 b1 00 	lds	r24, 0x00B1	; 0x8000b1 <readWord>
+ 3e8:	83 34       	cpi	r24, 0x43	; 67
+ 3ea:	71 f5       	brne	.+92     	; 0x448 <__DATA_REGION_LENGTH__+0x48>
+				uint8_t  i=0;
+				progress=0;
+ 3ec:	10 92 bc 00 	sts	0x00BC, r1	; 0x8000bc <progress>
+				sendXpos=0;
+ 3f0:	10 92 ba 00 	sts	0x00BA, r1	; 0x8000ba <sendXpos>
+				sendYpos=0;
+ 3f4:	10 92 bd 00 	sts	0x00BD, r1	; 0x8000bd <sendYpos>
+				PORTB=0;
+ 3f8:	18 ba       	out	0x18, r1	; 24
+				i=0;
+ 3fa:	30 e0       	ldi	r19, 0x00	; 0
+				uint8_t  j=0;
+				while(i<N){     // set grid array to 0
+ 3fc:	16 c0       	rjmp	.+44     	; 0x42a <__DATA_REGION_LENGTH__+0x2a>
+					while(j<N){
+						grid[i][j]=0;
+ 3fe:	83 2f       	mov	r24, r19
+ 400:	90 e0       	ldi	r25, 0x00	; 0
+ 402:	fc 01       	movw	r30, r24
+ 404:	ee 0f       	add	r30, r30
+ 406:	ff 1f       	adc	r31, r31
+ 408:	ee 0f       	add	r30, r30
+ 40a:	ff 1f       	adc	r31, r31
+ 40c:	ee 0f       	add	r30, r30
+ 40e:	ff 1f       	adc	r31, r31
+ 410:	e8 0f       	add	r30, r24
+ 412:	f9 1f       	adc	r31, r25
+ 414:	e0 5a       	subi	r30, 0xA0	; 160
+ 416:	ff 4f       	sbci	r31, 0xFF	; 255
+ 418:	e2 0f       	add	r30, r18
+ 41a:	f1 1d       	adc	r31, r1
+ 41c:	10 82       	st	Z, r1
+						j++;
+ 41e:	2f 5f       	subi	r18, 0xFF	; 255
+ 420:	01 c0       	rjmp	.+2      	; 0x424 <__DATA_REGION_LENGTH__+0x24>
+ 422:	20 e0       	ldi	r18, 0x00	; 0
+				sendYpos=0;
+				PORTB=0;
+				i=0;
+				uint8_t  j=0;
+				while(i<N){     // set grid array to 0
+					while(j<N){
+ 424:	29 30       	cpi	r18, 0x09	; 9
+ 426:	58 f3       	brcs	.-42     	; 0x3fe <__vector_11+0x74>
+						grid[i][j]=0;
+						j++;
+					}
+					j=0;
+					i++;
+ 428:	3f 5f       	subi	r19, 0xFF	; 255
+				sendXpos=0;
+				sendYpos=0;
+				PORTB=0;
+				i=0;
+				uint8_t  j=0;
+				while(i<N){     // set grid array to 0
+ 42a:	39 30       	cpi	r19, 0x09	; 9
+ 42c:	d0 f3       	brcs	.-12     	; 0x422 <__DATA_REGION_LENGTH__+0x22>
+						j++;
+					}
+					j=0;
+					i++;
+				}
+				putC('O');        // send letter O
+ 42e:	8f e4       	ldi	r24, 0x4F	; 79
+ 430:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC('K');        // send letter K
+ 434:	8b e4       	ldi	r24, 0x4B	; 75
+ 436:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0D);         // send letter CR
+ 43a:	8d e0       	ldi	r24, 0x0D	; 13
+ 43c:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0A);         // send letter LF
+ 440:	8a e0       	ldi	r24, 0x0A	; 10
+ 442:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+ 446:	f1 c0       	rjmp	.+482    	; 0x62a <__stack+0x1cb>
+			}
+			else if(readWord[0]=='N'){  // command is N read number of grid
+ 448:	80 91 b1 00 	lds	r24, 0x00B1	; 0x8000b1 <readWord>
+ 44c:	8e 34       	cpi	r24, 0x4E	; 78
+ 44e:	61 f5       	brne	.+88     	; 0x4a8 <__stack+0x49>
+				grid[readWord[1]-48-1][readWord[2]-48-1]=readWord[3]-48; // -48 to convert ascii to int
+ 450:	e1 eb       	ldi	r30, 0xB1	; 177
+ 452:	f0 e0       	ldi	r31, 0x00	; 0
+ 454:	81 81       	ldd	r24, Z+1	; 0x01
+ 456:	90 e0       	ldi	r25, 0x00	; 0
+ 458:	c1 97       	sbiw	r24, 0x31	; 49
+ 45a:	22 81       	ldd	r18, Z+2	; 0x02
+ 45c:	30 e0       	ldi	r19, 0x00	; 0
+ 45e:	21 53       	subi	r18, 0x31	; 49
+ 460:	31 09       	sbc	r19, r1
+ 462:	43 81       	ldd	r20, Z+3	; 0x03
+ 464:	40 53       	subi	r20, 0x30	; 48
+ 466:	bc 01       	movw	r22, r24
+ 468:	66 0f       	add	r22, r22
+ 46a:	77 1f       	adc	r23, r23
+ 46c:	66 0f       	add	r22, r22
+ 46e:	77 1f       	adc	r23, r23
+ 470:	66 0f       	add	r22, r22
+ 472:	77 1f       	adc	r23, r23
+ 474:	86 0f       	add	r24, r22
+ 476:	97 1f       	adc	r25, r23
+ 478:	80 5a       	subi	r24, 0xA0	; 160
+ 47a:	9f 4f       	sbci	r25, 0xFF	; 255
+ 47c:	fc 01       	movw	r30, r24
+ 47e:	e2 0f       	add	r30, r18
+ 480:	f3 1f       	adc	r31, r19
+ 482:	40 83       	st	Z, r20
+				progress++;
+ 484:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <progress>
+ 488:	8f 5f       	subi	r24, 0xFF	; 255
+ 48a:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <progress>
+				putC('O');        // send letter O
+ 48e:	8f e4       	ldi	r24, 0x4F	; 79
+ 490:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC('K');        // send letter K
+ 494:	8b e4       	ldi	r24, 0x4B	; 75
+ 496:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0D);         // send letter CR
+ 49a:	8d e0       	ldi	r24, 0x0D	; 13
+ 49c:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0A);         // send letter LF
+ 4a0:	8a e0       	ldi	r24, 0x0A	; 10
+ 4a2:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+ 4a6:	c1 c0       	rjmp	.+386    	; 0x62a <__stack+0x1cb>
+			}
+			else if(readWord[0]=='P'){  //If command is P set flag play =1 to start solving 
+ 4a8:	80 91 b1 00 	lds	r24, 0x00B1	; 0x8000b1 <readWord>
+ 4ac:	80 35       	cpi	r24, 0x50	; 80
+ 4ae:	81 f4       	brne	.+32     	; 0x4d0 <__stack+0x71>
+				play=1;
+ 4b0:	81 e0       	ldi	r24, 0x01	; 1
+ 4b2:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <play>
+				putC('O');        // send letter O
+ 4b6:	8f e4       	ldi	r24, 0x4F	; 79
+ 4b8:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC('K');        // send letter K
+ 4bc:	8b e4       	ldi	r24, 0x4B	; 75
+ 4be:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0D);         // send letter CR
+ 4c2:	8d e0       	ldi	r24, 0x0D	; 13
+ 4c4:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0A);         // send letter LF
+ 4c8:	8a e0       	ldi	r24, 0x0A	; 10
+ 4ca:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+ 4ce:	ad c0       	rjmp	.+346    	; 0x62a <__stack+0x1cb>
+			}
+			else if(readWord[0]=='S'){  //if command is S send the first number of grid 
+ 4d0:	80 91 b1 00 	lds	r24, 0x00B1	; 0x8000b1 <readWord>
+ 4d4:	83 35       	cpi	r24, 0x53	; 83
+ 4d6:	d1 f4       	brne	.+52     	; 0x50c <__stack+0xad>
+				putC('N');				  // send letter N
+ 4d8:	8e e4       	ldi	r24, 0x4E	; 78
+ 4da:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC('1');				  // send position X=0
+ 4de:	81 e3       	ldi	r24, 0x31	; 49
+ 4e0:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC('1');				  // send position Y=0
+ 4e4:	81 e3       	ldi	r24, 0x31	; 49
+ 4e6:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(grid[0][0]+48);  // send first number of grid
+ 4ea:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+ 4ee:	80 5d       	subi	r24, 0xD0	; 208
+ 4f0:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0D);               // send letter CR
+ 4f4:	8d e0       	ldi	r24, 0x0D	; 13
+ 4f6:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0A);               // send letter LF
+ 4fa:	8a e0       	ldi	r24, 0x0A	; 10
+ 4fc:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				sendXpos=0;
+ 500:	10 92 ba 00 	sts	0x00BA, r1	; 0x8000ba <sendXpos>
+				sendYpos=1;
+ 504:	81 e0       	ldi	r24, 0x01	; 1
+ 506:	80 93 bd 00 	sts	0x00BD, r24	; 0x8000bd <sendYpos>
+ 50a:	8f c0       	rjmp	.+286    	; 0x62a <__stack+0x1cb>
+			}	
+			else if(readWord[0]=='T'){  
+ 50c:	80 91 b1 00 	lds	r24, 0x00B1	; 0x8000b1 <readWord>
+ 510:	84 35       	cpi	r24, 0x54	; 84
+ 512:	09 f0       	breq	.+2      	; 0x516 <__stack+0xb7>
+ 514:	49 c0       	rjmp	.+146    	; 0x5a8 <__stack+0x149>
+				if(sendXpos==N){ // if we are DONE
+ 516:	80 91 ba 00 	lds	r24, 0x00BA	; 0x8000ba <sendXpos>
+ 51a:	89 30       	cpi	r24, 0x09	; 9
+ 51c:	51 f4       	brne	.+20     	; 0x532 <__stack+0xd3>
+					putC('D');				  // send letter D
+ 51e:	84 e4       	ldi	r24, 0x44	; 68
+ 520:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+					putC(0x0D);               // send letter CR
+ 524:	8d e0       	ldi	r24, 0x0D	; 13
+ 526:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+					putC(0x0A);               // send letter LF
+ 52a:	8a e0       	ldi	r24, 0x0A	; 10
+ 52c:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+ 530:	7c c0       	rjmp	.+248    	; 0x62a <__stack+0x1cb>
+				}
+				else{
+					putC('N');				  // send letter N
+ 532:	8e e4       	ldi	r24, 0x4E	; 78
+ 534:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+					putC(sendXpos+48+1);		  // send position X=0
+ 538:	80 91 ba 00 	lds	r24, 0x00BA	; 0x8000ba <sendXpos>
+ 53c:	8f 5c       	subi	r24, 0xCF	; 207
+ 53e:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+					putC(sendYpos+48+1);		  // send position Y=0
+ 542:	80 91 bd 00 	lds	r24, 0x00BD	; 0x8000bd <sendYpos>
+ 546:	8f 5c       	subi	r24, 0xCF	; 207
+ 548:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+					putC(grid[sendXpos][sendYpos]+48);  // send first number of grid
+ 54c:	80 91 ba 00 	lds	r24, 0x00BA	; 0x8000ba <sendXpos>
+ 550:	90 e0       	ldi	r25, 0x00	; 0
+ 552:	20 91 bd 00 	lds	r18, 0x00BD	; 0x8000bd <sendYpos>
+ 556:	fc 01       	movw	r30, r24
+ 558:	ee 0f       	add	r30, r30
+ 55a:	ff 1f       	adc	r31, r31
+ 55c:	ee 0f       	add	r30, r30
+ 55e:	ff 1f       	adc	r31, r31
+ 560:	ee 0f       	add	r30, r30
+ 562:	ff 1f       	adc	r31, r31
+ 564:	e8 0f       	add	r30, r24
+ 566:	f9 1f       	adc	r31, r25
+ 568:	e0 5a       	subi	r30, 0xA0	; 160
+ 56a:	ff 4f       	sbci	r31, 0xFF	; 255
+ 56c:	e2 0f       	add	r30, r18
+ 56e:	f1 1d       	adc	r31, r1
+ 570:	80 81       	ld	r24, Z
+ 572:	80 5d       	subi	r24, 0xD0	; 208
+ 574:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+					putC(0x0D);               // send letter CR
+ 578:	8d e0       	ldi	r24, 0x0D	; 13
+ 57a:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+					putC(0x0A);               // send letter LF
+ 57e:	8a e0       	ldi	r24, 0x0A	; 10
+ 580:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+					sendYpos=sendYpos+1;
+ 584:	80 91 bd 00 	lds	r24, 0x00BD	; 0x8000bd <sendYpos>
+ 588:	8f 5f       	subi	r24, 0xFF	; 255
+ 58a:	80 93 bd 00 	sts	0x00BD, r24	; 0x8000bd <sendYpos>
+					if(sendYpos==N){sendYpos=0;sendXpos=sendXpos+1;}//if we sent all row send next row
+ 58e:	80 91 bd 00 	lds	r24, 0x00BD	; 0x8000bd <sendYpos>
+ 592:	89 30       	cpi	r24, 0x09	; 9
+ 594:	09 f0       	breq	.+2      	; 0x598 <__stack+0x139>
+ 596:	49 c0       	rjmp	.+146    	; 0x62a <__stack+0x1cb>
+ 598:	10 92 bd 00 	sts	0x00BD, r1	; 0x8000bd <sendYpos>
+ 59c:	80 91 ba 00 	lds	r24, 0x00BA	; 0x8000ba <sendXpos>
+ 5a0:	8f 5f       	subi	r24, 0xFF	; 255
+ 5a2:	80 93 ba 00 	sts	0x00BA, r24	; 0x8000ba <sendXpos>
+ 5a6:	41 c0       	rjmp	.+130    	; 0x62a <__stack+0x1cb>
+												
+				}
+			}
+			else if(readWord[0]=='B'){  
+ 5a8:	80 91 b1 00 	lds	r24, 0x00B1	; 0x8000b1 <readWord>
+ 5ac:	82 34       	cpi	r24, 0x42	; 66
+ 5ae:	79 f4       	brne	.+30     	; 0x5ce <__stack+0x16f>
+				play =0;     // it will force sudoku to stop (finish)
+ 5b0:	10 92 bb 00 	sts	0x00BB, r1	; 0x8000bb <play>
+				putC('O');        // send letter O
+ 5b4:	8f e4       	ldi	r24, 0x4F	; 79
+ 5b6:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC('K');        // send letter K
+ 5ba:	8b e4       	ldi	r24, 0x4B	; 75
+ 5bc:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0D);               // send letter CR
+ 5c0:	8d e0       	ldi	r24, 0x0D	; 13
+ 5c2:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0A);               // send letter LF
+ 5c6:	8a e0       	ldi	r24, 0x0A	; 10
+ 5c8:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+ 5cc:	2e c0       	rjmp	.+92     	; 0x62a <__stack+0x1cb>
+			}
+			else if(readWord[0]=='D'){  
+ 5ce:	80 91 b1 00 	lds	r24, 0x00B1	; 0x8000b1 <readWord>
+ 5d2:	84 34       	cpi	r24, 0x44	; 68
+ 5d4:	51 f5       	brne	.+84     	; 0x62a <__stack+0x1cb>
+				putC('N');				  // send letter N
+ 5d6:	8e e4       	ldi	r24, 0x4E	; 78
+ 5d8:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(readWord[1]);				  // send position X=0
+ 5dc:	c1 eb       	ldi	r28, 0xB1	; 177
+ 5de:	d0 e0       	ldi	r29, 0x00	; 0
+ 5e0:	89 81       	ldd	r24, Y+1	; 0x01
+ 5e2:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(readWord[2]);				  // send position Y=0
+ 5e6:	8a 81       	ldd	r24, Y+2	; 0x02
+ 5e8:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(grid[readWord[1]-48-1][readWord[2]-48-1]+48);  // send asked number (-48 and +48 to convert int to ascii)
+ 5ec:	89 81       	ldd	r24, Y+1	; 0x01
+ 5ee:	90 e0       	ldi	r25, 0x00	; 0
+ 5f0:	c1 97       	sbiw	r24, 0x31	; 49
+ 5f2:	2a 81       	ldd	r18, Y+2	; 0x02
+ 5f4:	30 e0       	ldi	r19, 0x00	; 0
+ 5f6:	21 53       	subi	r18, 0x31	; 49
+ 5f8:	31 09       	sbc	r19, r1
+ 5fa:	ac 01       	movw	r20, r24
+ 5fc:	44 0f       	add	r20, r20
+ 5fe:	55 1f       	adc	r21, r21
+ 600:	44 0f       	add	r20, r20
+ 602:	55 1f       	adc	r21, r21
+ 604:	44 0f       	add	r20, r20
+ 606:	55 1f       	adc	r21, r21
+ 608:	84 0f       	add	r24, r20
+ 60a:	95 1f       	adc	r25, r21
+ 60c:	80 5a       	subi	r24, 0xA0	; 160
+ 60e:	9f 4f       	sbci	r25, 0xFF	; 255
+ 610:	fc 01       	movw	r30, r24
+ 612:	e2 0f       	add	r30, r18
+ 614:	f3 1f       	adc	r31, r19
+ 616:	80 81       	ld	r24, Z
+ 618:	80 5d       	subi	r24, 0xD0	; 208
+ 61a:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0D);               // send letter CR
+ 61e:	8d e0       	ldi	r24, 0x0D	; 13
+ 620:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				putC(0x0A);               // send letter LF
+ 624:	8a e0       	ldi	r24, 0x0A	; 10
+ 626:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+			}
+			letter=0;
+ 62a:	10 92 b9 00 	sts	0x00B9, r1	; 0x8000b9 <letter>
+			uint8_t i=0; 
+ 62e:	80 e0       	ldi	r24, 0x00	; 0
+			
+			while(i<SizeOfReadWord){   //set readWord=0
+ 630:	06 c0       	rjmp	.+12     	; 0x63e <__stack+0x1df>
+				readWord[i]=0;
+ 632:	e8 2f       	mov	r30, r24
+ 634:	f0 e0       	ldi	r31, 0x00	; 0
+ 636:	ef 54       	subi	r30, 0x4F	; 79
+ 638:	ff 4f       	sbci	r31, 0xFF	; 255
+ 63a:	10 82       	st	Z, r1
+				i++;
+ 63c:	8f 5f       	subi	r24, 0xFF	; 255
+				putC(0x0A);               // send letter LF
+			}
+			letter=0;
+			uint8_t i=0; 
+			
+			while(i<SizeOfReadWord){   //set readWord=0
+ 63e:	88 30       	cpi	r24, 0x08	; 8
+ 640:	c0 f3       	brcs	.-16     	; 0x632 <__stack+0x1d3>
+				readWord[i]=0;
+				i++;
+			}	
+		}
+			asm(" pop r31\n\t\
+ 642:	ff 91       	pop	r31
+ 644:	ef 91       	pop	r30
+ 646:	df 91       	pop	r29
+ 648:	cf 91       	pop	r28
+ 64a:	bf 91       	pop	r27
+ 64c:	af 91       	pop	r26
+ 64e:	9f 91       	pop	r25
+ 650:	8f 91       	pop	r24
+ 652:	7f 91       	pop	r23
+ 654:	6f 91       	pop	r22
+ 656:	5f 91       	pop	r21
+ 658:	4f 91       	pop	r20
+ 65a:	3f 91       	pop	r19
+ 65c:	2f 91       	pop	r18
+ 65e:	1f 91       	pop	r17
+ 660:	0f 91       	pop	r16
+ 662:	0f 90       	pop	r0
+ 664:	0f be       	out	0x3f, r0	; 63
+ 666:	00 24       	eor	r0, r0
+				pop r17 \n\t\
+				pop r16 \n\t\
+				pop r0	 \n\t\
+				out __SREG__,r0 \n\t\
+				clr r0");
+	reti();
+ 668:	18 95       	reti
+
+0000066a <initUART>:
+}
+
+
+//initialize USART
+void initUART(){
+	UCSRB=(1<<RXEN) | (1<<TXEN) | (1<<RXCIE);  // ; enable RXCIE=Interrupt enable ,RXEN=Receiver Enable, TXEN=Transmitter Enable
+ 66a:	88 e9       	ldi	r24, 0x98	; 152
+ 66c:	8a b9       	out	0x0a, r24	; 10
+	UBRRL=(10000000/16/9600)-1;								  //; set baud rate 9600 with the formula (F_CPU/16/baud) - 1
+ 66e:	80 e4       	ldi	r24, 0x40	; 64
+ 670:	89 b9       	out	0x09, r24	; 9
+	UCSRC=(1<<URSEL)|(0<<USBS)|(3<<UCSZ0);
+ 672:	86 e8       	ldi	r24, 0x86	; 134
+ 674:	80 bd       	out	0x20, r24	; 32
+ 676:	08 95       	ret
+
+00000678 <main>:
+
+// initializations and infinite loop
+int main(void)
+{
+		
+	progress=0; // number of solved cells
+ 678:	10 92 bc 00 	sts	0x00BC, r1	; 0x8000bc <progress>
+	uint8_t i=0;
+ 67c:	80 e0       	ldi	r24, 0x00	; 0
+	while(i<SizeOfReadWord){
+ 67e:	06 c0       	rjmp	.+12     	; 0x68c <main+0x14>
+		readWord[i]=0;
+ 680:	e8 2f       	mov	r30, r24
+ 682:	f0 e0       	ldi	r31, 0x00	; 0
+ 684:	ef 54       	subi	r30, 0x4F	; 79
+ 686:	ff 4f       	sbci	r31, 0xFF	; 255
+ 688:	10 82       	st	Z, r1
+		i++;
+ 68a:	8f 5f       	subi	r24, 0xFF	; 255
+int main(void)
+{
+		
+	progress=0; // number of solved cells
+	uint8_t i=0;
+	while(i<SizeOfReadWord){
+ 68c:	88 30       	cpi	r24, 0x08	; 8
+ 68e:	c0 f3       	brcs	.-16     	; 0x680 <main+0x8>
+		readWord[i]=0;
+		i++;
+	}
+	letter=0; // next letter of readWord we can write
+ 690:	10 92 b9 00 	sts	0x00B9, r1	; 0x8000b9 <letter>
+	play=0; // flag that starts ving
+ 694:	10 92 bb 00 	sts	0x00BB, r1	; 0x8000bb <play>
+	sendXpos=0; // position x of next number we wanna send
+ 698:	10 92 ba 00 	sts	0x00BA, r1	; 0x8000ba <sendXpos>
+	sendYpos=0; // position y of next number we wanna send*/
+ 69c:	10 92 bd 00 	sts	0x00BD, r1	; 0x8000bd <sendYpos>
+	
+	i=0;
+ 6a0:	30 e0       	ldi	r19, 0x00	; 0
+	while(i<N){     // set grid array to 0
+ 6a2:	16 c0       	rjmp	.+44     	; 0x6d0 <main+0x58>
+		uint8_t  j=0;
+		while(j<N){
+			grid[i][j]=0;
+ 6a4:	83 2f       	mov	r24, r19
+ 6a6:	90 e0       	ldi	r25, 0x00	; 0
+ 6a8:	fc 01       	movw	r30, r24
+ 6aa:	ee 0f       	add	r30, r30
+ 6ac:	ff 1f       	adc	r31, r31
+ 6ae:	ee 0f       	add	r30, r30
+ 6b0:	ff 1f       	adc	r31, r31
+ 6b2:	ee 0f       	add	r30, r30
+ 6b4:	ff 1f       	adc	r31, r31
+ 6b6:	e8 0f       	add	r30, r24
+ 6b8:	f9 1f       	adc	r31, r25
+ 6ba:	e0 5a       	subi	r30, 0xA0	; 160
+ 6bc:	ff 4f       	sbci	r31, 0xFF	; 255
+ 6be:	e2 0f       	add	r30, r18
+ 6c0:	f1 1d       	adc	r31, r1
+ 6c2:	10 82       	st	Z, r1
+			j++;
+ 6c4:	2f 5f       	subi	r18, 0xFF	; 255
+ 6c6:	01 c0       	rjmp	.+2      	; 0x6ca <main+0x52>
+ 6c8:	20 e0       	ldi	r18, 0x00	; 0
+	sendYpos=0; // position y of next number we wanna send*/
+	
+	i=0;
+	while(i<N){     // set grid array to 0
+		uint8_t  j=0;
+		while(j<N){
+ 6ca:	29 30       	cpi	r18, 0x09	; 9
+ 6cc:	58 f3       	brcs	.-42     	; 0x6a4 <main+0x2c>
+			grid[i][j]=0;
+			j++;
+		}
+		i++;
+ 6ce:	3f 5f       	subi	r19, 0xFF	; 255
+	play=0; // flag that starts ving
+	sendXpos=0; // position x of next number we wanna send
+	sendYpos=0; // position y of next number we wanna send*/
+	
+	i=0;
+	while(i<N){     // set grid array to 0
+ 6d0:	39 30       	cpi	r19, 0x09	; 9
+ 6d2:	d0 f3       	brcs	.-12     	; 0x6c8 <main+0x50>
+		i++;
+	}//*/
+	
+	//SPL=0x5D;
+	//SPH=0x04;// DEFAULT
+	DDRB=0xff;  //; set portb as output
+ 6d4:	8f ef       	ldi	r24, 0xFF	; 255
+ 6d6:	87 bb       	out	0x17, r24	; 23
+	PORTB=0;
+ 6d8:	18 ba       	out	0x18, r1	; 24
+	OCR1A=1536;				//; if the same value with counter then interrupt
+ 6da:	80 e0       	ldi	r24, 0x00	; 0
+ 6dc:	96 e0       	ldi	r25, 0x06	; 6
+ 6de:	9b bd       	out	0x2b, r25	; 43
+ 6e0:	8a bd       	out	0x2a, r24	; 42
+	TIMSK=(1<<OCIE1A);      //;enable compare interrupt for timer1
+ 6e2:	80 e1       	ldi	r24, 0x10	; 16
+ 6e4:	89 bf       	out	0x39, r24	; 57
+	sei();				    // enable global interrupt
+ 6e6:	78 94       	sei
+	TCCR1B=(1<<CS02);		//; starts the tcnt1l (counter 1B) with prescaler clk/256
+ 6e8:	84 e0       	ldi	r24, 0x04	; 4
+ 6ea:	8e bd       	out	0x2e, r24	; 46
+	initUART();
+ 6ec:	0e 94 35 03 	call	0x66a	; 0x66a <initUART>
+ 6f0:	02 c0       	rjmp	.+4      	; 0x6f6 <main+0x7e>
+	while(1){
+		while (play==0){ //;infinite loop
+			DDRB=0xff;
+ 6f2:	8f ef       	ldi	r24, 0xFF	; 255
+ 6f4:	87 bb       	out	0x17, r24	; 23
+	TIMSK=(1<<OCIE1A);      //;enable compare interrupt for timer1
+	sei();				    // enable global interrupt
+	TCCR1B=(1<<CS02);		//; starts the tcnt1l (counter 1B) with prescaler clk/256
+	initUART();
+	while(1){
+		while (play==0){ //;infinite loop
+ 6f6:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <play>
+ 6fa:	88 23       	and	r24, r24
+ 6fc:	d1 f3       	breq	.-12     	; 0x6f2 <main+0x7a>
+			DDRB=0xff;
+		}
+			if (SolveSudoku() == 1){
+ 6fe:	0e 94 f4 00 	call	0x1e8	; 0x1e8 <SolveSudoku>
+ 702:	81 30       	cpi	r24, 0x01	; 1
+ 704:	b9 f4       	brne	.+46     	; 0x734 <main+0xbc>
+				if(play==1){// if success (user didnt send break from usart)
+ 706:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <play>
+ 70a:	81 30       	cpi	r24, 0x01	; 1
+ 70c:	51 f4       	brne	.+20     	; 0x722 <main+0xaa>
+					putC('D');        // send letter K
+ 70e:	84 e4       	ldi	r24, 0x44	; 68
+ 710:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+					putC(0x0D);       // send letter CR
+ 714:	8d e0       	ldi	r24, 0x0D	; 13
+ 716:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+					putC(0x0A);       // send letter LF
+ 71a:	8a e0       	ldi	r24, 0x0A	; 10
+ 71c:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+ 720:	09 c0       	rjmp	.+18     	; 0x734 <main+0xbc>
+				}
+				else{
+					putC('E');        // send letter E for ERROR
+ 722:	85 e4       	ldi	r24, 0x45	; 69
+ 724:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+					putC(0x0D);       // send letter CR
+ 728:	8d e0       	ldi	r24, 0x0D	; 13
+ 72a:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+					putC(0x0A);       // send letter LF
+ 72e:	8a e0       	ldi	r24, 0x0A	; 10
+ 730:	0e 94 52 01 	call	0x2a4	; 0x2a4 <putC>
+				}
+		}
+		play=0;   // flag for infinite loop
+ 734:	10 92 bb 00 	sts	0x00BB, r1	; 0x8000bb <play>
+	}
+ 738:	de cf       	rjmp	.-68     	; 0x6f6 <main+0x7e>
+
+0000073a <_exit>:
+ 73a:	f8 94       	cli
+
+0000073c <__stop_program>:
+ 73c:	ff cf       	rjmp	.-2      	; 0x73c <__stop_program>
